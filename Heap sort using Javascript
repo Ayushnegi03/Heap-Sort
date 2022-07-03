@@ -1,0 +1,43 @@
+function sort(a)
+    {
+        var n = a.length;
+        for (var i = Math.floor(n / 2) - 1; i >= 0; i--)
+            heapify(a, n, i);
+        for (var i = n - 1; i > 0; i--) 
+        {
+            var temp = a[0];
+            a[0] = a[i];
+            a[i] = temp;
+            heap(a, i, 0);
+        }
+    }
+    function heap(a, n, i)
+    {
+        var Large = i;
+        var L = 2 * i + 1; 
+        var R = 2 * i + 2; 
+        if (L < n && a[L] > a[Large])
+            Large = L;
+        if (R < n && a[R] > a[Large])
+            Large = R;
+        if (Large != i) {
+            var swap = a[i];
+            a[i] = a[Large];
+            a[Large] = swap;
+            heap(arr, n, Large);
+        }
+    }
+    function printArray(a)
+    {
+        var n = a.length;
+        for (var i = 0; i < n; ++i)
+            console.log(a[i] + " ");     
+    }
+    var a = [ 5, 12, 11, 13, 4, 6, 7, 3, 4, 1];
+    var n = a.length;
+    sort(a);
+    console.log( "Sorted array is <br>");
+    printArray(a, n);
+//Output->
+//Sorted array is 
+//1 3 4 5 6 7 11 12 13
