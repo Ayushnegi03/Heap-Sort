@@ -1,0 +1,28 @@
+# Python program for implementation of heap Sort
+def heap(a, n, i):
+	Large = i
+	L = 2 * i + 1	 
+	R = 2 * i + 2	 
+	if L < n and a[Large] < a[L]:
+		Large = L
+	if R < n and a[Large] < a[R]:
+		Large = R
+	if Large != i:
+		heap(a, n, Large)
+def heapSort(a):
+	n = len(a)
+	for i in range(n//2 - 1, -1, -1):
+		heap(a, n, i)
+	for i in range(n-1, 0, -1):
+		a[i], a[0] = a[0], a[i]
+		heap(a, i, 0)
+arr = [12, 11, 13, 5, 6, 7, 4, 1, 3]
+heapSort(a)
+n = len(a)
+print("Sorted array is")
+for i in range(n):
+	print("%d",arr[i],end=" ")
+ Output->
+Sorted array is 
+1 4 5 6 7 11 12 13 
+
